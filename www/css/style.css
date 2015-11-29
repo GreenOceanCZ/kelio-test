@@ -1,0 +1,305 @@
+body {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #333;
+	background: white;
+}
+
+h1
+{
+	color: #3484D2;
+}
+
+#ajax-spinner {
+	margin: 15px 0 0 15px;
+	padding: 13px;
+	background: white url('../images/spinner.gif') no-repeat 50% 50%;
+	font-size: 0;
+	z-index: 123456;
+	display: none;
+}
+
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+a[href^="#error:"] {
+	background: red;
+	color: white;
+}
+
+form th, form td {
+	vertical-align: top;
+	font-weight: normal;
+}
+
+form th {
+	text-align: right;
+}
+
+form .required label {
+	font-weight: bold;
+}
+
+form .error {
+	color: #D00;
+	font-weight: bold;
+}
+
+	html,body,div,span,a,form,h1,h2,h3,h4,h5,h6,img
+	{
+		border: 0px none #000000;
+		margin: 0px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
+	}
+	html
+	{
+		overflow-x: auto;
+		overflow-y: scroll;
+	}
+	body
+	{
+		background: #3484d2;
+		color: #33333;
+		font-size: 14px/1.65;
+		font-family: Verdana, "Geneva CE", lucida, sans-serif;
+		margin: 40px auto 40px auto;
+		max-width: 1004px;
+		min-width: 300px;
+	}
+
+	a
+	{
+		color: #006aeb;
+		background-color: #ffffff;
+		padding: 3px 2px 3px 2px;
+	}
+	a:hover, a:active, a:focus
+	{
+		background-color: #006aeb;
+		color: #ffffff;
+		text-decoration: none;
+	}
+
+	
+
+	.DivTop
+	{
+		background-color: #121299;
+		border-radius: 12px 12px 0px 0px;
+		margin-bottom: 10px;
+	}
+	.DivTop .SpanLogo
+	{
+		background: url(data:image/png;base64,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) no-repeat 95%;
+		color: #ffffff;
+		font-size: 50px;
+		line-height: 121px;
+		padding-left: 4%;
+		text-shadow: 1px 1px 0px rgba(0, 0, 0, .9);
+	}
+	@media (max-width: 600px)
+	{
+		.DivTop .SpanLogo
+		{
+			background: none;
+		}
+	}
+
+	.DivConteiner
+	{
+		background-color: #ffffff;
+		border: 1px solid #eff4f7;
+		border-radius: 0px 0px 12px 12px;
+		overflow: hidden;
+		padding: 10px 4% 10px 4%;
+		min-height: 400px;
+	}
+	.DivContent h1
+	{
+		font-size: 160%;
+		margin-bottom:  15px;
+		text-align: center;
+	}
+
+	h1 span
+	{
+		color: #87A7D5;
+	}
+	h1 a
+	{
+		text-decoration: none;
+		background: transparent;
+	}
+
+	.DivLeft
+	{
+		border: 1px solid #999999;
+		border-radius: 10px;
+		display: inline-block;
+		min-height: 200px;
+		width: 200px;
+		position: absolute;
+	}
+	.DivMenu
+	{
+		border-bottom: 1px solid #999999;
+		min-height: 160px;
+	}
+	.DivMenu, .DivUser
+	{
+		margin: 10px 10px 5px 10px;
+		width: 180px;
+	}
+	.DivMenu a
+	{
+		color: #006aeb;
+		background-color: #ffffff;
+		display: inline-block;
+		border-bottom: 1px solid #006aeb;
+		overflow: hidden;
+		padding: 0px 10px 0px 10px;
+		text-decoration: none;
+		text-overflow: ellipsis;
+		width: 160px;
+	}
+	.DivMenu ul ul a
+	{
+		padding: 0px 10px 0px 20px;
+		width: 150px;
+	}
+	.DivMenu .LiNow a
+	{
+		background-color: #3484D2;
+		color: #ffffff;
+		text-align: right;
+		text-decoration: none;
+	}
+	a:hover, a:active, a:focus
+	{
+		background-color: #006aeb;
+		color: #ffffff;
+		text-decoration: none;
+	}
+	.DivMenu ul,  .DivMenu li, .UlPaging, .UlPaging li
+	{
+		display: block;
+		list-style-type: none;
+		margin: 0px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
+	}
+	.DivContent
+	{
+		width: 100%;
+	}
+	#content
+	{
+		padding: 0px 10px 0px 212px;
+	}
+	.LeftMargin, .DivCenterForm form
+	{
+		display: inline-block;
+		text-align: left;
+		margin: 0px auto 0px auto;
+	}
+	.Center, .DivCenterForm, .UlPaging
+	{
+		text-align: center;
+	}
+	.Right
+	{
+		text-align: right;
+	}
+	.DivUser span
+	{
+		max-width: 180px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.AdminControl, .AdminControlForm form
+	{
+		border: 1px solid #999999;
+		border-radius: 10px;
+		padding: 10px 10px 10px 10px;
+	}
+	h1 a
+	{
+		color: #ff0000;
+	}
+	.UlPaging
+	{
+		margin-top: 30px;
+	}
+	.UlPaging li
+	{
+		display: inline-block;
+		min-width: 15px;
+	}
+	textarea
+	{
+		max-height: 300px;
+		min-height: 170px;
+		max-width: 500px;
+		min-width: 500px;
+		width: 500px;
+	}
+	.AArticle
+	{
+		border-bottom: 1px solid #000000;
+		display: block;
+		text-decoration: none;
+	}
+	.AArticle span
+	{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.AArticle .SpanDate
+	{
+		font-size: 80%;
+	}
+	.AArticle .SpanName
+	{
+		overflow: hidden;
+		padding: 0px 10px 0px 10px;
+		text-overflow: ellipsis;
+		width: 440px;
+	}
+	.TableUser thead td
+	{
+		text-align: center;
+		width: 150px;
+	}
+	.TableUser thead th
+	{
+		font-weight: normal;
+		text-align: center;
+		width: 100px;
+	}
+	.TableUser tbody td
+	{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 150px;
+	}
+	.TableRights td, .TableRights thead th
+	{
+		text-align: center;
+		min-width: 50px;
+	}
+	.TableUser tbody tr:nth-child(even) td, .TableRights tbody tr:nth-child(even) td
+	{
+		background-color: #cccccc;
+	}
+	.TableUser tbody tr:nth-child(odd) td, .TableRights tbody tr:nth-child(odd) td
+	{
+		background-color: #aaaaaa;
+	}
+	.TableUser tbody tr:hover td, .TableRights tbody tr:hover td
+	{
+		background-color: #777777;
+	}

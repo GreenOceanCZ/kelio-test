@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>{ifset $title}{$title} | {/ifset}Nette Sandbox</title>
+
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+	<meta name="viewport" content="width=device-width">
+	{block head}{/block}
+</head>
+
+<body>
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	<div class="DivConteiner">
+		<div class="DivTop">
+			<div class="SpanLogo">Test nette</div>
+		</div>
+		<div class="DivLeft">
+			<div class="DivMenu">
+				<ul>
+					<li n:class="$presenter->isLinkCurrent('Homepage:default') ? 'LiNow' : 'Li'">
+						<a n:href="Homepage:default">Úvod</a>
+					</li>
+					{if $user->isLoggedIn()}
+						<li n:foreach="$menus as $menu"
+								n:class="$presenter->isLinkCurrent('Menu:show', array('id' => $menu->id))
+													|| $presenter->isLinkCurrent('Article:add', array('id' => $menu->id))
+													|| ($presenter->isLinkCurrent('Article:show') && $menu_id == $menu->id)
+													|| ($presenter->isLinkCurrent('Article:edit') && $menu_id == $menu->id)
+													|| ($presenter->isLinkCurrent('Article:delete') && $menu_id == $menu->id)
+													? 'LiNow' : 'Li'">
+							<a n:href="Menu:show, id => $menu->id">{$menu->name}</a>
+						</li>
+					{else}
+						<li n:foreach="$menus as $menu"
+								n:if="$menu->active"
+								n:class="$presenter->isLinkCurrent('Menu:show', array('id' => $menu->id))
+													|| ($presenter->isLinkCurrent('Article:show') && $menu_id == $menu->id)
+													? 'LiNow' : 'Li'">
+							<a n:href="Menu:show, id => $menu->id">{$menu->name}</a>
+						</li>
+					{/if}
+					<ul>
+						<li n:if="$user->isLoggedIn() && $user->isAllowed('menu', '_add')"
+								n:class="$presenter->isLinkCurrent('Menu:add') ? 'LiNow' : 'Li'">
+								<a n:href="Menu:add">+ Přidat položku</a>
+						</li>
+					</ul>
+					<ul n:if="$user->isLoggedIn()
+										&& ($user->isAllowed('user', '_add')
+										|| $user->isAllowed('user', '_edit')
+										|| $user->isAllowed('user', '_delete'))">
+						<li n:class="$presenter->isLinkCurrent('User:list') ? 'LiNow' : 'Li'">
+							<a n:href="User:list">+ Uživatelé</a>
+						</li>
+						<li n:class="$presenter->isLinkCurrent('User:right') ? 'LiNow' : 'Li'">
+							<a n:href="User:right">+ Práva</a>
+						</li>
+					</ul>
+				</ul>
+			</div>
+			<div n:if="!$user->isLoggedIn()" class="DivUser Right">
+				<a n:href="Sign:in">Přihlásit</a>
+				<a n:if="$user->isLoggedIn()" n:href="Sign:out">Odhlásit</a>
+			</div>
+			<div n:if="$user->isLoggedIn()" class="DivUser">
+				<span>Uživatel: <b>{$user->getIdentity()->data['login']}</b></span>
+				<div class="Right"><a n:href="Sign:out">Odhlásit</a></div>
+			</div>
+		</div>
+		<div class="DivContent"><div id="content">
+			{include content}
+		</div></div>
+	</div>
+	{block scripts}
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//nette.github.io/resources/js/netteForms.min.js"></script>
+	<script src="{$basePath}/js/main.js"></script>
+	{/block}
+</body>
+</html>

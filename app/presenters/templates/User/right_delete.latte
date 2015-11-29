@@ -1,0 +1,11 @@
+{block content}
+{if $id > 2 &&  $user->isLoggedIn() && $user->isAllowed('article', '_delete')}
+	<h1>Smazat uživatelský typ</h1>
+	<div class="Center AdminControl">
+		Opravdu chcete smazat uživatelský typ s názvem "{$usernow['name']}"?
+		<a n:href="DeleteRight! $id, TRUE">Ano</a>
+		<a n:href="User:list">Ne</a>
+	</div>
+{else}
+	{include '../Error/404.latte'}
+{/if}

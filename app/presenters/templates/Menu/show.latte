@@ -1,0 +1,43 @@
+{block content}
+	{if $id != 0}
+		<h1>{$menu['title']}
+			{if $user->isLoggedIn() && $user->isAllowed('menu', '_delete')}
+				<a n:href="Menu:delete, id => $menu['id'] ">X</a>
+			{/if}</h1>
+		{if $user->isLoggedIn() && $user->isAllowed('menu', '_edit')}
+			<div class="DivCenterForm">
+				<form n:name="addEditForm" class="AdminControl">
+					<label class="input">
+						{label name/}
+						{input name}
+					</label>
+					<label class="input">
+						{label title/}
+						{input title}
+					</label>
+					<label class="checkbox">
+						<input n:name="active">
+						<i></i> Aktivní menu
+					</label> 
+					<input n:if="isset($form['id'])" n:name="id">
+					<div class="Right">
+						{input send}
+					</div>
+				</form>
+			</div>
+		{/if}
+		{if $user->isLoggedIn() && $user->isAllowed('article', '_add')}
+			<a n:href="Article:add, id => $menu['id']">+ Přidat článek</a>
+		{/if}
+		<br /><br />
+		{foreach $articles as $article}
+			<a n:href="Article:show, id => $article->id" class="AArticle">
+				<span class="SpanName">{$article->title}</span>
+				<span class="SpanDate">({$article->lastedit|date:'%d. %m. %Y %H:%M:%S'})</span>
+			</a>
+		{/foreach}
+		{control paginator}
+	{else}
+		{include '../Error/404.latte'}
+	{/if}
+{/block}\

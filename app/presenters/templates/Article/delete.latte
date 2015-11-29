@@ -1,0 +1,11 @@
+{block content}
+{if $id != 0 &&  $user->isLoggedIn() && $user->isAllowed('article', '_delete')}
+	<h1>Smazat článek</h1>
+	<div class="Center AdminControl">
+		Opravdu chcete smazat článek s názvem "{$article['title']}"?
+		<a n:href="delete! $id, TRUE">Ano</a>
+		<a n:href="Article:show, $id">Ne</a>
+	</div>
+{else}
+	{include '../Error/404.latte'}
+{/if}

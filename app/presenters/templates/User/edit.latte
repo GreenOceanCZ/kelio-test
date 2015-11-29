@@ -1,0 +1,11 @@
+{block content}
+	<h1>Editovat uživatele</h1>
+	{if $user->isLoggedIn() && $user->isAllowed('user', '_edit')}
+		<a n:href="User:list">&lt;- Zpět na výpis uživatelů</a>
+		<div class="DivCenterForm AdminControlForm">
+			{control addEditForm}
+		</div>
+	{else}
+		{include '../Permission/Edit.latte'}
+	{/if}
+{/block}

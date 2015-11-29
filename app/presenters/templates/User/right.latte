@@ -1,0 +1,83 @@
+{block content}
+	{if $user->isLoggedIn()}
+		<h1>Uživatelská práva</h1>
+		{if $user->isAllowed('user', '_add')}
+			<h2>Přidat typ uživatele</h2>
+			<div class="DivCenterForm AdminControlForm">{control addEditRightForm}</div>
+			<h2>Seznam</h2>
+		{/if}
+		Uživatelské typy Správce(vše povoleno) a demo(vše zakázáno) nelze editovat a odstranit.
+		Po smazání uživatelského typu budou všihni uživatelé s tohoto typu nastaveni jako demo.
+		<table class="TableRights">
+			<thead>
+				<tr>
+					<th>id</th>
+					<td>Název</td>
+					<td colspan="3">Uživatelé / práva</td>
+					<td colspan="3">Menu</td>
+					<td colspan="3">Články</td>
+					<td></td>
+				</tr>
+				<tr>
+					<th colspan="2"></th>
+					<td>+</td>
+					<td>E</td>
+					<td>X</td>
+					<td>+</td>
+					<td>E</td>
+					<td>X</td>
+					<td>+</td>
+					<td>E</td>
+					<td>X</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody>
+				{foreach $qoRights as $now}
+					{if $now['id'] == 1 || $now['id'] == 2}
+							<tr class="TrNoEdit">
+								<th>{$now['id']}</th>
+								<td>{$now['name']}</td>
+								<td>{$now['user_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['user_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['user_delete'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_delete'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_delete'] ? 'Ano' : 'Ne'}</td>
+								<td></td>
+							</tr>
+						{else}
+							<tr>
+								<th>{$now['id']}</th>
+								<td>{$now['name']}</td>
+								<td>{$now['user_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['user_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['user_delete'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['menu_delete'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_add'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_edit'] ? 'Ano' : 'Ne'}</td>
+								<td>{$now['article_delete'] ? 'Ano' : 'Ne'}</td>
+								<td>
+									<a n:href="User:right_edit, id => $now['id']" n:if="$user_edit">E</a>
+									<a n:href="User:right_delete, id => $now['id']" n:if="$user_delete && $user->id != $now['id']">X</a>
+								</td>
+							</tr>
+					{/if}
+				{/foreach}
+			</tbody>
+		</table>
+		{control paginator}
+	{else}
+		{include '../Error/404.latte'}
+	{/if}
+{/block}
+{block user}
+	<tr>
+	
+	</tr>
+{/block}

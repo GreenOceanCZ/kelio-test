@@ -1,0 +1,11 @@
+{block content}
+{if $id != 0 &&  $user->isLoggedIn() && $user->isAllowed('menu', '_delete')}
+	<h1>Smazat položku menu</h1>
+	<div class="Center AdminControl">
+		Opravdu chcete smazat menu s názvem "{$menu['name']}"?
+		<a n:href="delete! $id, TRUE">Ano</a>
+		<a n:href="Menu:show, $id">Ne</a>
+	</div>
+{else}
+	{include '../Error/404.latte'}
+{/if}

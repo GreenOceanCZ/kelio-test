@@ -1,0 +1,9 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=nette_test_1'
+	user: root
+	password: efcxsd
+	options:
+		lazy: yes

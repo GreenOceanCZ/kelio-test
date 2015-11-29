@@ -1,0 +1,27 @@
+{block content}
+	<h1>Přidat položku menu</h1>
+	{if $user->isLoggedIn() && $user->isAllowed('menu', '_add')}
+		<div class="DivCenterForm">
+			<form n:name="addEditForm" class="smart-form AdminControl">
+				<label class="input">
+					{label name/}
+					{input name}
+				</label>
+				<label class="input">
+					{label title/}
+					{input title}
+				</label>
+				<label class="checkbox">
+					<input n:name="active">
+					<i></i> Aktivní menu
+				</label> 
+				<input n:if="isset($form['id'])" n:name="id">
+				<div class="pull-right">
+					{input send}
+				</div>
+			</form>
+		</div>
+	{else}
+		{include '../Permission/Add.latte'}
+	{/if}
+{/block}

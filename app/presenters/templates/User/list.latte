@@ -1,0 +1,57 @@
+{block content}
+	{if $user->isLoggedIn()}
+		<h1>Uživatelé</h1>
+		{if $user->isAllowed('user', '_add')}
+			<h2>Přidat uživatele</h2>
+			<div class="DivCenterForm AdminControlForm">{control addEditForm}</div>
+			<h2>Seznam</h2>
+		{/if}
+		Uživatelé admin a demo nelze editovat a mazat(aby byla uvodní stránka stále aktuální).
+		Aktuální uživatel se nemůže sám smazat. Uživatelé mají unikátní loginy.
+		Lze fitrovat/vyhledávat uživatele.<br />
+		<form n:name="filterForm" class="Right">
+					<label class="input">
+						{label filtr/}
+						{input filtr}
+					</label>
+					{input send}<br /><br />
+				</form>
+		<table class="TableUser AdminControl">
+			<thead>
+				<tr><th>id</th><td>Login</td><td>Email</td><td>Typ</td><td></td></tr>
+			</thead>
+			<tbody>
+				{foreach $users as $now}
+					{if $now['id'] == 1 || $now['id'] == 2}
+							<tr class="TrNoEdit">
+								<th>{$now['id']}</th>
+								<td>{$now['login']}</td>
+								<td>{$now['email']}</td>
+								<td>{$now['name']}</td>
+								<td></td>
+							</tr>
+						{else}
+							<tr>
+								<th>{$now['id']}</th>
+								<td>{$now['login']}</td>
+								<td>{$now['email']}</td>
+								<td>{$now['name']}</td>
+								<td>
+									<a n:href="User:edit, id => $now['id']" n:if="$user_edit">E</a>
+									<a n:href="User:delete, id => $now['id']" n:if="$user_delete && $user->id != $now['id']">X</a>
+								</td>
+							</tr>
+					{/if}
+				{/foreach}
+			</tbody>
+		</table>
+		{control paginator}
+	{else}
+		{include '../Error/404.latte'}
+	{/if}
+{/block}
+{block user}
+	<tr>
+	
+	</tr>
+{/block}

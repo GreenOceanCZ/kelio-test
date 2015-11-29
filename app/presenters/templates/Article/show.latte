@@ -1,0 +1,21 @@
+{block content}
+	{if $id != 0}
+		<h1>
+			{$article['title']}
+			{if $user->isLoggedIn() && $user->isAllowed('article', '_edit')}
+				<a n:href="Article:edit, id => $id ">E</a>
+			{/if}
+			{if $user->isLoggedIn() && $user->isAllowed('article', '_delete')}
+				<a n:href="Article:delete, id => $id ">X</a>
+			{/if}
+		</h1>
+		<a n:href="Menu:show, id => $menu_id">&lt;- Zpět na menu</a>
+		<div class="AdminControl">
+			{!$article['text']}
+			<hr />
+			<div class="Right"><b>{$user_name}</b> ({$article['lastedit']|date:'%d. %m. %Y %H:%M:%S'})</div>
+		</div>
+	{else}
+		{include '../Error/404.latte'}
+	{/if}
+{/block}

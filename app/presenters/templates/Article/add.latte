@@ -1,0 +1,11 @@
+{block content}
+	<h1>Přidat článek</h1>
+	{if $user->isLoggedIn() && $user->isAllowed('article', '_add')}
+		<div class="DivCenterForm AdminControlForm">
+			<a n:href="Menu:show, id => $id">&lt;- Zpět na menu</a>
+			{control addEditForm}
+		</div>
+	{else}
+		{include '../Permission/Add.latte'}
+	{/if}
+{/block}
