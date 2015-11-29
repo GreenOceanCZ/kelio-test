@@ -1,11 +1,11 @@
 Nette kelio startup
 =============
 
-Vytvoøit mini online aplikaci, která bude obsahovat následující funkce:
-Vstup po pøihlášení (login, heslo)
-Bude obsahovat tabulku s uivateli (filtr, stránkování)
-Monost vloit/editovat jednotlivé uivatele
-Odhlášení
+VytvoÅ™it mini online aplikaci, kterÃ¡ bude obsahovat nÃ¡sledujÃ­cÃ­ funkce:
+Vstup po pÅ™ihlÃ¡Å¡enÃ­ (login, heslo)
+Bude obsahovat tabulku s uÅ¾ivateli (filtr, strÃ¡nkovÃ¡nÃ­)
+MoÅ¾nost vloÅ¾it/editovat jednotlivÃ© uÅ¾ivatele
+OdhlÃ¡Å¡enÃ­
 
 License
 -------
